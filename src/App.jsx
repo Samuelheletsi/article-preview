@@ -1,5 +1,6 @@
-import { createContext, useState, useEffect, React } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import Card from './components/Card';
+import articleData from './article.json'; // JSON must be inside src/
 
 export const DataContext = createContext();
 
@@ -7,10 +8,7 @@ function App() {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
-    fetch("./article.json")
-      .then(res => res.json())
-      .then(data => setUser(data))
-      .catch(err => console.log(err));
+    setUser(articleData);
   }, []);
 
   return (
